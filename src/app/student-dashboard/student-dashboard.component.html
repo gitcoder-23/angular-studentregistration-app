@@ -1,0 +1,172 @@
+<div class="container">
+  <!-- Content here -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Student Dashboard</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="d-flex">
+          <button
+            class="btn btn-success"
+            type="submit"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Add Student
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of studentList">
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.class }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.mobile }}</td>
+        <td>
+          <input
+            type="button"
+            class="btn btn-success me-2"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            value="Edit"
+            (click)="EditStudent(student)"
+          />
+          <input
+            type="button"
+            class="btn btn-danger"
+            value="Delete"
+            (click)="DeleteStudent(student)"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">
+          Student Registration
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="mb-3">
+            <label for="txtName" class="form-label">Student Name</label>
+            <input
+              formControlName="name"
+              type="text"
+              class="form-control"
+              id="txtName"
+              placeholder="Enter Your Name"
+            />
+          </div>
+          <div class="col-md-12 mb-2">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="txtClass" class="form-label">Class</label>
+                <input
+                  formControlName="class"
+                  type="text"
+                  class="form-control"
+                  id="txtClass"
+                  placeholder="Enter Your Class"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="txtEmail" class="form-label">Email address</label>
+
+                <div class="input-group">
+                  <div class="input-group-text">@</div>
+                  <input
+                    formControlName="email"
+                    type="email"
+                    class="form-control"
+                    id="txtEmail"
+                    placeholder="Enter Your Email"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="txtMobile" class="form-label">Mobile</label>
+            <div class="input-group">
+              <div class="input-group-text">+91</div>
+              <input
+                formControlName="mobile"
+                type="text"
+                class="form-control"
+                id="txtMobile"
+                placeholder="Enter Your Mobile Number"
+              />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          *ngIf="btnSaveShow"
+          type="button"
+          class="btn btn-primary"
+          (click)="AddStudent()"
+        >
+          Save
+        </button>
+        <button
+          *ngIf="btnUpdateShow"
+          type="button"
+          class="btn btn-primary"
+          (click)="UpdateStudent()"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

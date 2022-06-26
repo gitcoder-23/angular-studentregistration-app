@@ -1,0 +1,35 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 2,
+      "name": "Ram Kumar",
+      "class": "BTech, ECE",
+      "email": "ram@yahoo.com",
+      "mobile": " 8529637412"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "students": [
+    {
+      "id": 1,
+      "name": "Rahul Kumar",
+      "class": "BTech, ECE",
+      "email": "rahul@gmail.com",
+      "mobile": "7894656125"
+    }
+  ]
+}
